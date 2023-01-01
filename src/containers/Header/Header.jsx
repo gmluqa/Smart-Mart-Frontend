@@ -2,7 +2,7 @@ import "./Header.scss";
 
 const Header = () => {
   return (
-    <div>
+    <div className="d-flex justify-content-between p-5">
       <div>Logo</div>
       <div>Search</div>
       <div>Cart</div>
