@@ -40,7 +40,7 @@ const Footer = () => {
         <Row className="text-center">
           <div>
             Prices, specifications, images, and videos are subject to change
-            without notice. Vat19.com is not responsible for typographical or
+            without notice. SmartMart is not responsible for typographical or
             illustrative errors.
           </div>
           <div className="pt-2">
