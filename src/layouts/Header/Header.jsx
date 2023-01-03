@@ -26,12 +26,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// <Container>
-//         <Navbar.Brand href="/">
-//           <img src={logo} className="logo"></img>
-//         </Navbar.Brand>
-//         <div>Search</div>
-//         <div>Login</div>
-//         <div>Cart</div>
-//       </Container>

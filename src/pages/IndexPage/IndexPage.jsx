@@ -6,7 +6,7 @@ const IndexPage = () => {
       <Row>
         <Col className="text-center pt-3">Automate. Optimize. Economize.</Col>
         <Row className="pt-3">
-          <Col className="ps-5">
+          <Col xs={2} className="ps-5">
             <Col>Solutions by Category</Col>
             <Col>Tech</Col>
             <Col>Supplementation</Col>
