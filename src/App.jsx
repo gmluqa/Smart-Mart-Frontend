@@ -10,6 +10,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<IndexPage />} />
+        <Route
+          path="*"
+          element={<div>Uh oh, I still need to write a 404 page...</div>}
+        />
       </Routes>
       <Footer />
     </div>
