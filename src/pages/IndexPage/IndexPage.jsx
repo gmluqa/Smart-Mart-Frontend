@@ -4,10 +4,12 @@ const IndexPage = () => {
   return (
     <Container fluid>
       <Row>
-        <Col className="text-center pt-3">Automate. Optimize. Economize.</Col>
+        <Row className="text-center pt-3">
+          <div>Automate. Optimize. Economize.</div>
+        </Row>
         <Row className="pt-3">
-          <Col xs={2} className="ps-5">
-            <Col>Solutions by Category</Col>
+          <Col className="ps-5">
+            <Col>Categories</Col>
             <Col>Tech</Col>
             <Col>Supplementation</Col>
             <Col>Lifestyle</Col>
@@ -24,7 +26,7 @@ const IndexPage = () => {
               <Col>Img 5</Col>
             </Row>
           </Col>
-          <Col>New Arrivals</Col>
+          <Col>New</Col>
         </Row>
         <Col className="text-center pt-3">
           <Col>Watch our products in action</Col>
