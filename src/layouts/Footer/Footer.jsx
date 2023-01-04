@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 const Footer = () => {
   return (
     <Container fluid className="bg-light">
-      <Row className="pt-4">
+      <Row className="pt-4 text-center justify-content-center">
         <Col>
           About Us
           <Col>
@@ -25,7 +25,7 @@ const Footer = () => {
           </Col>
           <a href="">Add more links here...</a>
         </Col>
-        <Col>
+        <Col className="text-center justify-content-center">
           Feeling lucky? <a href="">Show me a random product!</a>
         </Col>
         <Row className="text-center bg-dark">
@@ -46,6 +46,10 @@ const Footer = () => {
           <div className="pt-2">
             Orders ship same day when placed by 2PM GMT Mon-Fri excluding
             holidays.
+          </div>
+          <div className="pt-2">
+            Disclaimer: This is a project for my bootcamp, none of the products
+            on this site can actually be ordered.
           </div>
         </Row>
       </Row>
