@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 import IndexPage from "./pages/IndexPage/IndexPage";
 import Footer from "./layouts/Footer/Footer";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 function App() {
   return (
@@ -10,6 +11,13 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<IndexPage />} />
+
+        <Route
+          path="/products/:productName"
+          element={<ProductDetails />}
+        ></Route>
+
+        {/* Reserved spot for 404 */}
         <Route
           path="*"
           element={<div>Uh oh, I still need to write a 404 page...</div>}

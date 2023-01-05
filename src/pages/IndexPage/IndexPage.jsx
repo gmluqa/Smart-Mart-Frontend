@@ -7,7 +7,7 @@ const IndexPage = () => {
     <Container fluid>
       <Row>
         <Row className="text-center pt-3">
-          <div>Automate. Optimize. Economize.</div>
+          <div>Automize. Optimize. Economize.</div>
         </Row>
         <Row className="pt-3">
           <Col className="ps-5">

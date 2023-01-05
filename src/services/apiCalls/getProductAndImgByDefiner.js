@@ -15,6 +15,6 @@ export async function getProductNameAndImgByDefiner(id, definer) {
       });
     return productNameAndImgPath;
   } catch (error) {
-    return productNameAndImgPath;
+    return { product_name: "Error", img_path: "Error" };
   }
 }
