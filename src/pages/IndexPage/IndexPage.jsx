@@ -1,15 +1,16 @@
 import { Col, Container, Row } from "react-bootstrap";
 import ProductImage from "../../components/ProductImage/ProductImage";
 import ProductVideo from "../../components/ProductVideo/ProductVideo";
+import "./IndexPage.scss";
 
 const IndexPage = () => {
   return (
-    <Container fluid>
-      <Row>
-        <Row className="text-center pt-3">
+    <Container fluid className="p-0">
+      <Row className="p-0 p">
+        <Row className="text-center tag-line">
           <div>Automize. Optimize. Economize.</div>
         </Row>
-        <Row className="pt-3">
+        <Row className="pt-3 index-row">
           <Col className="ps-5">
             <Col>Categories</Col>
             <Col>Tech</Col>
@@ -18,7 +19,7 @@ const IndexPage = () => {
             <Col>Bathroom</Col>
             <Col>Supplements</Col>
           </Col>
-          <Col className="p-0">
+          <Col className="">
             <ProductImage
               name="Zubits"
               url="https://images.squarespace-cdn.com/content/v1/556ca79fe4b00d9b2abccd3b/1455036002197-H8ODMDQWGSTDRJN1GUTO/Zubits-Magnetic-Shoe-Closures-Never-Tie-Laces-Again-0-600x600.jpg"

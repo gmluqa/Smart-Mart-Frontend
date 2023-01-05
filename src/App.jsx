@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 import IndexPage from "./pages/IndexPage/IndexPage";
 import Footer from "./layouts/Footer/Footer";
-import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import ProductDetail from "./pages/ProductDetail/ProductDetail.jsx";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
 
         <Route
           path="/products/:productName"
-          element={<ProductDetails />}
+          element={<ProductDetail />}
         ></Route>
 
         {/* Reserved spot for 404 */}
