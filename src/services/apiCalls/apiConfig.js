@@ -1,3 +1,3 @@
-const apiRoute = "http://localhost:3000";
+const apiRoute = "https://smart-mart-backend-production.up.railway.app";
 
 export { apiRoute };
