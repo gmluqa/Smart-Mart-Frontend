@@ -5,10 +5,21 @@
 }
 
 .productImageImage {
-  width: 100%;
+  width: 66%;
+}
+
+.productCard {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
 }
 
 .text-border-name {
   background-color: orange;
   border-radius: 5px 5px 0px 0px;
+  color: black;
+}
+
+.productLink {
 }

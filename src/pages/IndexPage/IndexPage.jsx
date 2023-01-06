@@ -11,7 +11,7 @@ const IndexPage = () => {
           <div>Automize. Optimize. Economize.</div>
         </Row>
         <Row className="pt-3 index-row">
-          <Col className="ps-5">
+          <Col lg={4} className="ps-5">
             <Col>Categories</Col>
             <Col>Tech</Col>
             <Col>Lifestyle</Col>
@@ -19,10 +19,11 @@ const IndexPage = () => {
             <Col>Bathroom</Col>
             <Col>Supplements</Col>
           </Col>
-          <Col className="">
+          <Col>
             <ProductImage
               name="Zubits"
               url="https://images.squarespace-cdn.com/content/v1/556ca79fe4b00d9b2abccd3b/1455036002197-H8ODMDQWGSTDRJN1GUTO/Zubits-Magnetic-Shoe-Closures-Never-Tie-Laces-Again-0-600x600.jpg"
+              tagLine="The Magnetic Shoelaces"
             ></ProductImage>
             <Row>
               <ProductImage
@@ -45,7 +46,7 @@ const IndexPage = () => {
               ></ProductImage>
             </Row>
           </Col>
-          <Col>New</Col>
+          <Col lg={4}></Col>
         </Row>
         <Col className="text-center pt-3">
           <Col>Watch our products in action</Col>
