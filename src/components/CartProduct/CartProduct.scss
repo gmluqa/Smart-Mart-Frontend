@@ -1,0 +1,13 @@
+.trashButton {
+  border-radius: 50%;
+  --bs-btn-border-color: orange;
+  --bs-btn-bg: orange;
+  --bs-btn-hover-bg: orange;
+  border-color: black;
+  --bs-btn-active-bg: red;
+}
+
+.trashButton:hover {
+  background-color: black;
+  border-color: black;
+}

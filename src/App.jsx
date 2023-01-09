@@ -4,6 +4,9 @@ import "./App.scss";
 import IndexPage from "./pages/IndexPage/IndexPage";
 import Footer from "./layouts/Footer/Footer";
 import ProductDetail from "./pages/ProductDetail/ProductDetail.jsx";
+import CartPage from "./pages/CartPage/CartPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -11,17 +14,15 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<IndexPage />} />
-
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route
           path="/products/:productName"
           element={<ProductDetail />}
         ></Route>
 
         {/* Reserved spot for 404 */}
-        <Route
-          path="*"
-          element={<div>Uh oh, I still need to write a 404 page...</div>}
-        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
