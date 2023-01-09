@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import getProductByName from "../../services/apiCalls/getProductByName";
 import "./ProductDetail.scss";
 import AddToCart from "../../components/AddToCart/AddToCart";
+import NotFound from "../NotFound/NotFound";
 
 const ProductDetails = () => {
   const { productName } = useParams();
@@ -14,38 +15,50 @@ const ProductDetails = () => {
 
   useEffect(() => {
     getProductByName(productName).then(data => setProduct(data));
+    console.log(product);
   }, []);
 
-  return (
-    <Container>
-      <Row>
-        <Col>
-          <Row>
-            <img
-              className="productDetailImg"
-              src={product?.[2]?.[0]?.img_path}
-              alt={`${product?.[0]?.product_name} img`}
-            />
-          </Row>
-          <Row></Row>
-        </Col>
-        <Col>
-          <Row>{product?.[0]?.product_name}</Row>
-          <Row>{product?.[0]?.product_description}</Row>
-          <Row> {product?.[0]?.product_price}</Row>
-          <Row xs={4}>
-            <AddToCart name={productName} />
-          </Row>
-          <Row>
-            <Col>
-              {console.log(product)}
-              <iframe src={product?.[0]?.youtube_url} allowFullScreen></iframe>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
-  );
+  if (product?.product_name != "Error") {
+    return (
+      <Container>
+        <Row>
+          <Col>
+            <Row>
+              <img
+                className="productDetailImg"
+                src={product?.[2]?.[0]?.img_path}
+                alt={`${product?.[0]?.product_name} img`}
+              />
+            </Row>
+            <Row></Row>
+          </Col>
+          <Col>
+            <Row>{product?.[0]?.product_name}</Row>
+            <Row>{product?.[0]?.product_description}</Row>
+            <Row> {product?.[0]?.product_price}</Row>
+            <Row xs={4}>
+              <AddToCart name={productName} />
+            </Row>
+            <Row>
+              <Col>
+                {console.log(product)}
+                <iframe
+                  src={product?.[0]?.youtube_url}
+                  allowFullScreen
+                ></iframe>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+    );
+  } else {
+    return (
+      <>
+        <NotFound></NotFound>
+      </>
+    );
+  }
 };
 
 export default ProductDetails;
