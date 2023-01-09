@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
+import { render } from "react-dom";
 import { useParams } from "react-router-dom";
 import getProductByName from "../../services/apiCalls/getProductByName";
 import "./ProductDetail.scss";
@@ -10,10 +12,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    getProductByName(productName).then(
-      data => setProduct(data),
-      console.log(product)
-    );
+    getProductByName(productName).then(data => setProduct(data));
   }, []);
 
   return (
@@ -55,9 +54,14 @@ const ProductDetails = () => {
           <Row>{product?.[0]?.product_description}</Row>
           <Row> {product?.[0]?.product_price}</Row>
           <Row xs={4}>
-            <button></button>
+            <Button>Add to cart</Button>
           </Row>
-          <Row>5</Row>
+          <Row>
+            <Col>
+              {console.log(product)}
+              <iframe src={product?.[0]?.youtube_url} allowFullScreen></iframe>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Container>
