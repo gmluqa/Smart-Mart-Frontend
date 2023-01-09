@@ -13,8 +13,8 @@ let productsToFetchArray = [
 
 const IndexPage = () => {
   return (
-    <Container fluid className="p-0">
-      <Row className="p-0 p">
+    <Container fluid>
+      <Row className="p-0">
         <Row className="text-center tag-line">
           <div>Automize. Optimize. Economize.</div>
         </Row>
