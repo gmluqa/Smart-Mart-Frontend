@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import CartProduct from "../../components/CartProduct/CartProduct";
+import CheckoutButton from "../../components/CheckoutButton/CheckoutButton";
 
 const IndexPage = () => {
   const [cartItemsArray, setCartItemsArray] = useState([]);
@@ -22,7 +23,9 @@ const IndexPage = () => {
           {cartItemsArray.map(item => (
             <CartProduct name={item}></CartProduct>
           ))}
-          <Row className="p-3"></Row>
+          <Row className="p-3">
+            <CheckoutButton></CheckoutButton>
+          </Row>
         </Col>
         <Col></Col>
       </Row>
