@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
 import { render } from "react-dom";
 import { useParams } from "react-router-dom";
 import getProductByName from "../../services/apiCalls/getProductByName";
 import "./ProductDetail.scss";
+import AddToCart from "../../components/AddToCart/AddToCart";
 
 const ProductDetails = () => {
   const { productName } = useParams();
@@ -17,27 +18,6 @@ const ProductDetails = () => {
 
   return (
     <Container>
-      {/* <Col>
-        <Col>
-          <Col>
-            
-          </Col>
-          <Col></Col>
-        </Col>
-        <Col>
-          <Row xs={6}> </Row>
-          <Row></Row>
-          <Row>{product?.[0]?.product_price}</Row>
-          <Col>
-            <button></button>
-          </Col>
-          <Col>{product?.[0]?.product_name}</Col>
-        </Col>
-      </Col>
-      <div></div>
-
-      {console.log(product)} */}
-
       <Row>
         <Col>
           <Row>
@@ -54,7 +34,7 @@ const ProductDetails = () => {
           <Row>{product?.[0]?.product_description}</Row>
           <Row> {product?.[0]?.product_price}</Row>
           <Row xs={4}>
-            <Button>Add to cart</Button>
+            <AddToCart name={productName} />
           </Row>
           <Row>
             <Col>
