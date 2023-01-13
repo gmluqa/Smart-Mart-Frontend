@@ -23,7 +23,7 @@ const IndexPage = () => {
             <CartProduct name={item}></CartProduct>
           ))}
           <Row className="p-3">
-            <CheckoutButton></CheckoutButton>
+            <CheckoutButton />
           </Row>
         </Col>
         <Col></Col>

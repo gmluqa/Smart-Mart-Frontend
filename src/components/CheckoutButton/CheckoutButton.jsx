@@ -3,12 +3,15 @@ import { Button } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
 import "./CheckoutButton.scss";
+import { useSelector } from "react-redux";
 
 const CheckoutButton = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const login = useSelector(state => state.login);
 
   return (
     <>

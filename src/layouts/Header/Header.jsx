@@ -12,10 +12,6 @@ const Header = () => {
   const login = useSelector(state => state.login);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("rerender plz");
-  }, [login]);
-
   const navigationHandlerUser = () => {
     let path = login.loginValid ? "/User Area" : "/Login";
     return navigate(path);
@@ -25,7 +21,7 @@ const Header = () => {
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand onClick={() => navigate("./")}>
-          <img src={logo} className="logo"></img>
+          <img src={logo} className="logo" style={{ cursor: "pointer" }}></img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
