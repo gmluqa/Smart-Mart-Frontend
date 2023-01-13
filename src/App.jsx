@@ -8,12 +8,15 @@ import CartPage from "./pages/CartPage/CartPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFound from "./pages/NotFound/NotFound";
 import { useEffect } from "react";
+import { useJwt } from "react-jwt";
 
 function App() {
-  useEffect(() => {
-    let jwtFromLocalStorage = localStorage.getItem("SmartMartJwt");
-    console.log(jwtFromLocalStorage);
-  }, []);
+  let jwtFromLocalStorage = localStorage.getItem("SmartMartJwt");
+  const { decodedToken, isExpired } = useJwt(jwtFromLocalStorage);
+  console.log(decodedToken);
+  console.log(isExpired);
+
+  useEffect(() => {});
 
   return (
     <div className="App">
