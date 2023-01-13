@@ -16,7 +16,7 @@ const Header = () => {
     console.log("rerender plz");
   }, [login]);
 
-  const navigationHandler = () => {
+  const navigationHandlerUser = () => {
     let path = login.loginValid ? "/User Area" : "/Login";
     return navigate(path);
   };
@@ -24,16 +24,16 @@ const Header = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand onClick={() => navigate("./")}>
           <img src={logo} className="logo"></img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link onClick={navigationHandler}>
+            <Nav.Link onClick={navigationHandlerUser}>
               {login.loginValid ? "User Area" : "Login"}
             </Nav.Link>
-            <Nav.Link href="/cart">Cart</Nav.Link>
+            <Nav.Link onClick={() => navigate("/cart")}>Cart</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
