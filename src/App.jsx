@@ -15,6 +15,7 @@ import {
   placeUserType,
   validateLogin,
 } from "./store/slices/loginSlice";
+import UserArea from "./pages/UserArea/UserArea";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,12 +34,13 @@ function App() {
       : dispatch(placeJwt(jwtFromLocalStorage)) &&
         dispatch(validateLogin(!isExpired)) &&
         dispatch(placeUserType(decodedToken?.userType));
-  }, []);
+  }, [decodedToken]);
 
   return (
     <div className="App">
       <Header />
       <Routes>
+        <Route path="/User Area" element={<UserArea />} />
         <Route path="/" element={<IndexPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />
