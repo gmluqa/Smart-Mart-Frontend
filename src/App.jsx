@@ -21,8 +21,10 @@ function App() {
   useEffect(() => {
     isExpired || decodedToken == null
       ? null
-      : dispatch(placeJwt(jwtFromLocalStorage));
-  }, [decodedToken]);
+      : dispatch(placeJwt(jwtFromLocalStorage)) &&
+        dispatch(validateLogin(!isExpired)) &&
+        dispatch(placeUserType(decodedToken.user));
+  }, []);
 
   return (
     <div className="App">
