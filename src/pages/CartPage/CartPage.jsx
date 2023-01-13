@@ -14,7 +14,6 @@ const IndexPage = () => {
     setCartItemsArray(JSON.parse(localStorage.getItem("SmartMartCart")));
   }, []);
 
-  console.log(cartItemsArray);
   return (
     <Container fluid>
       <Row>
