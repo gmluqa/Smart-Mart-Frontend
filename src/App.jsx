@@ -9,14 +9,20 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFound from "./pages/NotFound/NotFound";
 import { useEffect } from "react";
 import { useJwt } from "react-jwt";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
+  const login = useSelector(state => state.login);
+  const dispatch = useDispatch();
+
   let jwtFromLocalStorage = localStorage.getItem("SmartMartJwt");
   const { decodedToken, isExpired } = useJwt(jwtFromLocalStorage);
-  console.log(decodedToken);
-  console.log(isExpired);
 
-  useEffect(() => {});
+  useEffect(() => {
+    isExpired || decodedToken == null
+      ? null
+      : dispatch(placeJwt(jwtFromLocalStorage));
+  }, [decodedToken]);
 
   return (
     <div className="App">
