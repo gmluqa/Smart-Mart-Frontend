@@ -11,16 +11,13 @@ export const loginSlice = createSlice({
   initialState,
   reducers: {
     placeJwt: (state, action) => {
-      state.jwtFromLocalStorage = [
-        ...state.jwtFromLocalStorage,
-        action.payload,
-      ];
+      state.jwtFromLocalStorage = action.payload;
     },
     validateLogin: (state, action) => {
-      state.loginValid = [...state.loginValid, action.payload];
+      state.loginValid = action.payload;
     },
     placeUserType: (state, action) => {
-      state.userType = [...state.userType, action.payload];
+      state.userType = action.payload;
     },
   },
 });

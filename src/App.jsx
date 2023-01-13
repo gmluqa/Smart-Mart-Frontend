@@ -10,20 +10,29 @@ import NotFound from "./pages/NotFound/NotFound";
 import { useEffect } from "react";
 import { useJwt } from "react-jwt";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  placeJwt,
+  placeUserType,
+  validateLogin,
+} from "./store/slices/loginSlice";
 
 function App() {
-  const login = useSelector(state => state.login);
   const dispatch = useDispatch();
+  const login = useSelector(state => state.login);
 
   let jwtFromLocalStorage = localStorage.getItem("SmartMartJwt");
   const { decodedToken, isExpired } = useJwt(jwtFromLocalStorage);
 
+  // Use effect handles authorization and auto-logout after exp date
+
   useEffect(() => {
     isExpired || decodedToken == null
-      ? null
+      ? dispatch(placeJwt("")) &&
+        dispatch(validateLogin(true)) &&
+        dispatch(placeUserType(""))
       : dispatch(placeJwt(jwtFromLocalStorage)) &&
         dispatch(validateLogin(!isExpired)) &&
-        dispatch(placeUserType(decodedToken.user));
+        dispatch(placeUserType(decodedToken?.userType));
   }, []);
 
   return (
