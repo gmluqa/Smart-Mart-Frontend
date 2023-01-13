@@ -16,7 +16,7 @@ const LoginPage = () => {
     authMessageHandler(jwt.message);
     localStorage.setItem("SmartMartJwt", jwt.jwt);
     if (jwt.success) {
-      navigate("../user-area");
+      navigate("../User Area");
     }
   };
 

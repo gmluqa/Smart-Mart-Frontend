@@ -7,7 +7,7 @@ import ProductDetail from "./pages/ProductDetail/ProductDetail.jsx";
 import CartPage from "./pages/CartPage/CartPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFound from "./pages/NotFound/NotFound";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useJwt } from "react-jwt";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -21,20 +21,23 @@ function App() {
   const dispatch = useDispatch();
   const login = useSelector(state => state.login);
 
-  let jwtFromLocalStorage = localStorage.getItem("SmartMartJwt");
-  const { decodedToken, isExpired } = useJwt(jwtFromLocalStorage);
+  const [jwtFromLS, setJwtFromLS] = useState("");
 
   // Use effect handles authorization and auto-logout after exp date
 
   useEffect(() => {
-    isExpired || decodedToken == null
-      ? dispatch(placeJwt("")) &&
-        dispatch(validateLogin(true)) &&
-        dispatch(placeUserType(""))
-      : dispatch(placeJwt(jwtFromLocalStorage)) &&
-        dispatch(validateLogin(!isExpired)) &&
-        dispatch(placeUserType(decodedToken?.userType));
-  }, [decodedToken]);
+    setJwtFromLS(localStorage.getItem("SmartMartJwt"));
+  }, []);
+
+  useEffect(() => {
+    console.log("I can't read");
+    console.log(jwtFromLS);
+  }, [jwtFromLS]);
+  // useEffect(() => {
+  //   console.log(jwtFromLS);
+  // }, []);
+
+  // const { decodedToken, isExpired } = useJwt(jwtFromLS);
 
   return (
     <div className="App">
