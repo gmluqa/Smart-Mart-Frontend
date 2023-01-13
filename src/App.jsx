@@ -7,8 +7,14 @@ import ProductDetail from "./pages/ProductDetail/ProductDetail.jsx";
 import CartPage from "./pages/CartPage/CartPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFound from "./pages/NotFound/NotFound";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    let jwtFromLocalStorage = localStorage.getItem("SmartMartJwt");
+    console.log(jwtFromLocalStorage);
+  }, []);
+
   return (
     <div className="App">
       <Header />
