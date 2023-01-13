@@ -5,9 +5,21 @@ import { Container } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const login = useSelector(state => state.login);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("rerender plz");
+  }, [login]);
+
+  const navigationHandler = () => {
+    let path = login.loginValid ? "/User Area" : "/Login";
+    return navigate(path);
+  };
 
   return (
     <Navbar bg="light" expand="lg">
@@ -18,10 +30,9 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href={login.loginValid ? "User Area" : "Login"}>
+            <Nav.Link onClick={navigationHandler}>
               {login.loginValid ? "User Area" : "Login"}
             </Nav.Link>
-            <Nav.Link>Search</Nav.Link>
             <Nav.Link href="/cart">Cart</Nav.Link>
           </Nav>
         </Navbar.Collapse>

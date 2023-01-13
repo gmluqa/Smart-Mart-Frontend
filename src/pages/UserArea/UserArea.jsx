@@ -1,10 +1,10 @@
 import { Container, Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import User from "./User";
 import { useNavigate } from "react-router-dom";
+import Admin from "../LoginPage/Admin";
+import User from "../LoginPage/User";
 
 const UserArea = () => {
-  const navigate = useNavigate();
   const login = useSelector(state => state.login);
 
   // Case not logged in (re-direct to index, get rekt)
@@ -13,9 +13,17 @@ const UserArea = () => {
 
   return (
     <Container>
-      {login.loginValid == false || login.jwtFromLocalStorage == null
-        ? navigate("../")
-        : "do something else"}
+      <Row>
+        <Col>
+          {login.userType == "Admin" ? (
+            <Admin />
+          ) : login.userType == "User" ? (
+            <User />
+          ) : (
+            "You are not logged in, please log in."
+          )}
+        </Col>
+      </Row>
     </Container>
   );
 };

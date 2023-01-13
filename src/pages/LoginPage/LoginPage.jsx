@@ -1,7 +1,7 @@
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import EventMessage from "../../components/EventMessage/EventMessage";
 import loginUser from "../../services/apiCalls/loginUser.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const LoginPage = () => {
@@ -16,7 +16,8 @@ const LoginPage = () => {
     authMessageHandler(jwt.message);
     localStorage.setItem("SmartMartJwt", jwt.jwt);
     if (jwt.success) {
-      navigate("../User Area");
+      navigate("/User Area");
+      window.location.reload();
     }
   };
 

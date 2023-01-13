@@ -20,24 +20,25 @@ import UserArea from "./pages/UserArea/UserArea";
 function App() {
   const dispatch = useDispatch();
   const login = useSelector(state => state.login);
-
   const [jwtFromLS, setJwtFromLS] = useState("");
 
-  // Use effect handles authorization and auto-logout after exp date
+  // Use effect handles authorization and auto-logout after exp date, step by step useEffect reliance
+
+  const { decodedToken, isExpired, reEvaluateToken } = useJwt(jwtFromLS);
 
   useEffect(() => {
     setJwtFromLS(localStorage.getItem("SmartMartJwt"));
   }, []);
 
   useEffect(() => {
-    console.log("I can't read");
-    console.log(jwtFromLS);
+    reEvaluateToken(jwtFromLS);
   }, [jwtFromLS]);
-  // useEffect(() => {
-  //   console.log(jwtFromLS);
-  // }, []);
 
-  // const { decodedToken, isExpired } = useJwt(jwtFromLS);
+  useEffect(() => {
+    dispatch(placeJwt(jwtFromLS));
+    dispatch(validateLogin(!isExpired));
+    dispatch(placeUserType(decodedToken?.userType));
+  }, [reEvaluateToken]);
 
   return (
     <div className="App">
