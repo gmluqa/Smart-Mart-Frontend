@@ -1,16 +1,26 @@
 import { apiRoute } from "./apiConfig.js";
 import axios from "axios";
 
+let resp = {
+  message: "",
+  jwt: "",
+  success: "",
+};
+
 const loginUser = async (email, password) => {
   try {
     await axios
       .post(`${apiRoute}/user/login`, { email: email, password: password })
       .then(response => {
-        console.log(response);
+        resp.message = "Success, re-directing...";
+        resp.jwt = response.data.token;
+        resp.success = true;
       });
-    return { message: "Logged in!" };
+    return resp;
   } catch (error) {
-    return { message: "Not logged in..." };
+    resp.message = "Invalid email or password, please try again.";
+    resp.success = false;
+    return resp;
   }
 };
 

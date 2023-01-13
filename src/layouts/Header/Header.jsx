@@ -4,8 +4,11 @@ import logo from "../../assets/img/header/SmartMartLogo.png";
 import { Container } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const login = useSelector(state => state.login);
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -15,7 +18,9 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href={login.loginValid ? "User Area" : "Login"}>
+              {login.loginValid ? "User Area" : "Login"}
+            </Nav.Link>
             <Nav.Link>Search</Nav.Link>
             <Nav.Link href="/cart">Cart</Nav.Link>
           </Nav>
