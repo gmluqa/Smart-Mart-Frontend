@@ -7,6 +7,7 @@ import ProductDetail from "./pages/ProductDetail/ProductDetail.jsx";
 import CartPage from "./pages/CartPage/CartPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFound from "./pages/NotFound/NotFound";
+import UserOrders from "./pages/UserOrders/UserOrders";
 import { useEffect, useState } from "react";
 import { useJwt } from "react-jwt";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,35 +17,40 @@ import {
   validateLogin,
 } from "./store/slices/loginSlice";
 import UserArea from "./pages/UserArea/UserArea";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 function App() {
   const dispatch = useDispatch();
   const login = useSelector(state => state.login);
-
   const [jwtFromLS, setJwtFromLS] = useState("");
 
-  // Use effect handles authorization and auto-logout after exp date
+  // Use effect handles authorization and auto-logout after exp date, step by step useEffect reliance
+
+  const { decodedToken, isExpired, reEvaluateToken } = useJwt(jwtFromLS);
 
   useEffect(() => {
     setJwtFromLS(localStorage.getItem("SmartMartJwt"));
   }, []);
 
   useEffect(() => {
-    console.log("I can't read");
-    console.log(jwtFromLS);
+    reEvaluateToken(jwtFromLS);
   }, [jwtFromLS]);
-  // useEffect(() => {
-  //   console.log(jwtFromLS);
-  // }, []);
 
-  // const { decodedToken, isExpired } = useJwt(jwtFromLS);
+  useEffect(() => {
+    dispatch(placeJwt(jwtFromLS));
+    dispatch(validateLogin(!isExpired));
+    dispatch(placeUserType(decodedToken?.userType));
+    console.log(login);
+  }, [reEvaluateToken]);
 
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/User Area" element={<UserArea />} />
         <Route path="/" element={<IndexPage />} />
+        <Route path="/User Area" element={<UserArea />} />
+        <Route path="/User Area/Orders" element={<UserOrders />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route

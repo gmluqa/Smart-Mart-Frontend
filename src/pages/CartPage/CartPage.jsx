@@ -14,7 +14,6 @@ const IndexPage = () => {
     setCartItemsArray(JSON.parse(localStorage.getItem("SmartMartCart")));
   }, []);
 
-  console.log(cartItemsArray);
   return (
     <Container fluid>
       <Row>
@@ -24,7 +23,7 @@ const IndexPage = () => {
             <CartProduct name={item}></CartProduct>
           ))}
           <Row className="p-3">
-            <CheckoutButton></CheckoutButton>
+            <CheckoutButton />
           </Row>
         </Col>
         <Col></Col>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 
 const AddToCart = props => {
@@ -12,6 +12,10 @@ const AddToCart = props => {
   }, []);
 
   const addItemToCart = () => {
+    setItemToCart("Added!");
+    setTimeout(() => {
+      setItemToCart("Add item to cart");
+    }, 750);
     // recover the localstorage cart arr in current state, have it jsonified
     let cart = localStorage.getItem("SmartMartCart");
     cart = JSON.parse(cart);
@@ -23,9 +27,11 @@ const AddToCart = props => {
     localStorage.setItem("SmartMartCart", cart);
   };
 
+  const [itemToCart, setItemToCart] = useState("Add item to cart");
+
   return (
     <>
-      <Button onClick={addItemToCart}>Add to cart</Button>
+      <Button onClick={addItemToCart}>{itemToCart}</Button>
     </>
   );
 };
