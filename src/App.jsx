@@ -38,6 +38,7 @@ function App() {
     dispatch(placeJwt(jwtFromLS));
     dispatch(validateLogin(!isExpired));
     dispatch(placeUserType(decodedToken?.userType));
+    console.log(login);
   }, [reEvaluateToken]);
 
   return (

@@ -3,18 +3,25 @@ import axios from "axios";
 
 let orderMessage = { message: "", success: false };
 
-export async function createNewOrder(items, email) {
-  //   try {
-  //     await axios.get(`${apiRoute}/product/id/${id}`).then(response => {
-  //       productNameAndImgPath.product_name = response.data.product_name;
-  //     });
-  //     await axios
-  //       .get(`${apiRoute}/product/id/${id}/img/${definer}`)
-  //       .then(response => {
-  //         productNameAndImgPath.img_path = response.data.img_path;
-  //       });
-  //     return productNameAndImgPath;
-  //   } catch (error) {
-  //     return { product_name: "Error", img_path: "Error" };
-  //   }
+export async function createNewOrder(items, jwtIfLoggedIn, email) {
+  try {
+    await axios
+      .post(
+        `${apiRoute}/order`,
+        { items: items },
+        {
+          headers: {
+            Authorization: `Bearer ${jwtIfLoggedIn}`,
+          },
+        }
+      )
+      .then(response => {
+        orderMessage.message = response.data.message;
+        orderMessage.success = true;
+      });
+    return orderMessage;
+  } catch (error) {
+    console.log(error);
+    return { message: "well this sucks", success: false };
+  }
 }
