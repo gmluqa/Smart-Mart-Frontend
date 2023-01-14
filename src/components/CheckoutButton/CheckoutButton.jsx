@@ -1,14 +1,27 @@
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Row } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
 import "./CheckoutButton.scss";
 import { useSelector } from "react-redux";
 import { createNewOrder } from "../../services/apiCalls/createNewOrder";
 import validateEmail from "../../utils/validateEmail.utils";
+import EventMessage from "../EventMessage/EventMessage";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutButton = () => {
+  const [isLogged, setIsLogged] = useState(false);
+  const [authMessage, setAuthMessage] = useState();
   const [show, setShow] = useState(false);
+
+  const navigate = useNavigate();
+
+  const authMessageHandler = authMessage => {
+    setAuthMessage(authMessage);
+    setTimeout(() => {
+      setAuthMessage();
+    }, 2000);
+  };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,29 +29,40 @@ const CheckoutButton = () => {
   // order handler, takes in no params, all is locally accessed from component
   const handleOrder = () => {
     let orderMessage = "";
-    if (email == null) {
-      // we do the default dance, return at the end
-      console.log("default dance");
+    let items = JSON.parse(localStorage.getItem("SmartMartCart"));
+
+    // Case for empty cart
+    if (items.length == 0) {
+      orderMessage = "You have 0 items in your cart 😭";
+      authMessageHandler(orderMessage);
+      return;
     }
+
+    let email = "";
+    isLogged ? (email = "") : (email = formBasicEmail.value);
+
+    if (isLogged) {
+      let jwtFromLs = localStorage.getItem("SmartMartJwt");
+      createNewOrder(items, jwtFromLs);
+    } else if (!isLogged) {
+      if (validateEmail(email) == false) {
+        orderMessage = "Please enter a valid email!";
+        authMessageHandler(orderMessage);
+        return;
+      }
+    }
+
+    // else if not logged
+    // we do the check for value path
+
     // else we proceed with an order that comes from a non logged user:
     // check for valid email in front
-    console.log(email);
 
-    if (validateEmail(email) == false) {
-      orderMessage = "Please enter a valid email!";
-      console.log(orderMessage);
-      return orderMessage;
-    }
-    orderMessage = "Ordered! Details sent to your email";
-    // do order
-    console.log(orderMessage);
-
-    // navigate to /order
+    orderMessage = `Order success! Details sent to ${email}`;
+    authMessageHandler(orderMessage);
   };
 
   const login = useSelector(state => state.login);
-
-  const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
     setIsLogged(login.loginValid);
@@ -92,6 +116,11 @@ const CheckoutButton = () => {
             >
               Submit
             </Button>
+            <div>
+              {authMessage ? (
+                <EventMessage message={authMessage}></EventMessage>
+              ) : null}
+            </div>
           </Form>
         </Offcanvas.Body>
       </Offcanvas>

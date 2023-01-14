@@ -3,7 +3,7 @@ import axios from "axios";
 
 let orderMessage = { message: "", success: false };
 
-export async function createNewOrder(items, jwtIfLoggedIn, email) {
+export async function createNewOrder(items, jwtIfLoggedIn) {
   try {
     await axios
       .post(
