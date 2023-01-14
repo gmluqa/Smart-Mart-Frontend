@@ -16,6 +16,7 @@ import {
   validateLogin,
 } from "./store/slices/loginSlice";
 import UserArea from "./pages/UserArea/UserArea";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,8 +46,9 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/User Area" element={<UserArea />} />
         <Route path="/" element={<IndexPage />} />
+        <Route path="/User Area" element={<UserArea />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route

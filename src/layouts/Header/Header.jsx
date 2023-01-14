@@ -29,6 +29,7 @@ const Header = () => {
             <Nav.Link onClick={navigationHandlerUser}>
               {login.loginValid ? "User Area" : "Login"}
             </Nav.Link>
+            <Nav.Link onClick={() => navigate("/search")}>Search</Nav.Link>
             <Nav.Link onClick={() => navigate("/cart")}>Cart</Nav.Link>
           </Nav>
         </Navbar.Collapse>
