@@ -7,6 +7,7 @@ import ProductDetail from "./pages/ProductDetail/ProductDetail.jsx";
 import CartPage from "./pages/CartPage/CartPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFound from "./pages/NotFound/NotFound";
+import UserOrders from "./pages/UserOrders/UserOrders";
 import { useEffect, useState } from "react";
 import { useJwt } from "react-jwt";
 import { useDispatch, useSelector } from "react-redux";
@@ -48,6 +49,7 @@ function App() {
       <Routes>
         <Route path="/" element={<IndexPage />} />
         <Route path="/User Area" element={<UserArea />} />
+        <Route path="/User Area/Orders" element={<UserOrders />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />

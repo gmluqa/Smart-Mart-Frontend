@@ -12,7 +12,6 @@ const Logout = () => {
   const navigate = useNavigate();
 
   const clickHandlerLogoutDispatch = () => {
-    console.log("dam i been clikd");
     localStorage.setItem("SmartMartJwt", "");
     dispatch(placeJwt(""));
     dispatch(validateLogin(false));
