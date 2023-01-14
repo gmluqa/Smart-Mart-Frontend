@@ -11,6 +11,11 @@ const CheckoutButton = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // order handler, takes in no params, all is locally accessed from component
+  const handleOrder = () => {
+    console.log("ordered");
+  };
+
   const login = useSelector(state => state.login);
 
   return (
@@ -44,7 +49,7 @@ const CheckoutButton = () => {
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button onClick={handleOrder} variant="primary" type="button">
               Submit
             </Button>
           </Form>

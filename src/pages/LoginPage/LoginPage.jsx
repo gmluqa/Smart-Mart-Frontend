@@ -3,16 +3,15 @@ import EventMessage from "../../components/EventMessage/EventMessage";
 import loginUser from "../../services/apiCalls/loginUser.js";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import registerUser from "../../services/apiCalls/registerUser";
 
 const LoginPage = () => {
   const [authMessage, setAuthMessage] = useState();
   const navigate = useNavigate();
 
-  const loginSubmit = async () => {
-    let jwt = await loginUser(
-      formBasicEmailLogin.value,
-      formBasicPasswordLogin.value
-    );
+  const loginSubmit = async (email, password) => {
+    console.log("button");
+    let jwt = await loginUser(email, password);
     authMessageHandler(jwt.message);
     localStorage.setItem("SmartMartJwt", jwt.jwt);
     if (jwt.success) {
@@ -21,7 +20,21 @@ const LoginPage = () => {
     }
   };
 
-  const registerSubmit = async () => {};
+  const registerSubmit = async () => {
+    console.log("heres a register");
+    let register = await registerUser(
+      formBasicEmailRegister.value,
+      formBasicPasswordRegister.value
+    );
+    authMessageHandler(register.message);
+
+    if (register.success == true) {
+      loginSubmit(
+        formBasicEmailRegister.value,
+        formBasicPasswordRegister.value
+      );
+    }
+  };
 
   const authMessageHandler = authMessage => {
     setAuthMessage(authMessage);
@@ -52,7 +65,12 @@ const LoginPage = () => {
             </Form.Group>
 
             <Button
-              onClick={loginSubmit}
+              onClick={() =>
+                loginSubmit(
+                  formBasicEmailLogin.value,
+                  formBasicPasswordLogin.value
+                )
+              }
               className="mb-4"
               variant="primary"
               type="button"
@@ -81,7 +99,12 @@ const LoginPage = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder="Password" />
             </Form.Group>
-            <Button className="mb-4" variant="primary" type="button">
+            <Button
+              onClick={registerSubmit}
+              className="mb-4"
+              variant="primary"
+              type="button"
+            >
               Submit
             </Button>
           </Form>
