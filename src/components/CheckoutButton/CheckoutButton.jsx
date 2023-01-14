@@ -60,6 +60,10 @@ const CheckoutButton = () => {
 
     orderMessage = `Order success! Details sent to ${email}`;
     authMessageHandler(orderMessage);
+    setTimeout(() => {
+      localStorage.setItem("SmartMartCart", "[]");
+      navigate("../");
+    }, 1000);
   };
 
   const login = useSelector(state => state.login);
