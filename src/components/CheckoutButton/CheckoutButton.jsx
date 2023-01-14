@@ -27,7 +27,7 @@ const CheckoutButton = () => {
   const handleShow = () => setShow(true);
 
   // order handler, takes in no params, all is locally accessed from component
-  const handleOrder = () => {
+  const handleOrder = async () => {
     let orderMessage = "";
     let items = JSON.parse(localStorage.getItem("SmartMartCart"));
 
@@ -43,7 +43,17 @@ const CheckoutButton = () => {
 
     if (isLogged) {
       let jwtFromLs = localStorage.getItem("SmartMartJwt");
-      createNewOrder(items, jwtFromLs);
+      let newOrder = await createNewOrder(items, jwtFromLs);
+      orderMessage = newOrder.message;
+      authMessageHandler(orderMessage);
+      setTimeout(() => {
+        localStorage.setItem("SmartMartCart", "[]");
+        navigate("../");
+      }, 1000);
+
+      return;
+      // else we proceed with an order that comes from a non logged user:
+      // check for valid email in front
     } else if (!isLogged) {
       if (validateEmail(email) == false) {
         orderMessage = "Please enter a valid email!";
@@ -51,12 +61,6 @@ const CheckoutButton = () => {
         return;
       }
     }
-
-    // else if not logged
-    // we do the check for value path
-
-    // else we proceed with an order that comes from a non logged user:
-    // check for valid email in front
 
     orderMessage = `Order success! Details sent to ${email}`;
     authMessageHandler(orderMessage);
