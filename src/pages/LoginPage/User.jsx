@@ -1,5 +1,4 @@
 import { Col, Row, Button } from "react-bootstrap";
-import { useEffect } from "react";
 import Logout from "../../components/Logout/Logout";
 import { useNavigate } from "react-router-dom";
 

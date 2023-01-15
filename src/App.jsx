@@ -8,6 +8,7 @@ import CartPage from "./pages/CartPage/CartPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFound from "./pages/NotFound/NotFound";
 import UserOrders from "./pages/UserOrders/UserOrders";
+import AdminOrders from "./pages/AdminOrders/AdminOrders";
 import { useEffect, useState } from "react";
 import { useJwt } from "react-jwt";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,7 +41,6 @@ function App() {
     dispatch(placeJwt(jwtFromLS));
     dispatch(validateLogin(!isExpired));
     dispatch(placeUserType(decodedToken?.userType));
-    console.log(login);
   }, [reEvaluateToken]);
 
   return (
@@ -57,6 +57,7 @@ function App() {
           path="/products/:productName"
           element={<ProductDetail />}
         ></Route>
+        <Route path="/User Area/Admin Orders" element={<AdminOrders />}></Route>
 
         {/* Reserved spot for 404 */}
         <Route path="*" element={<NotFound />} />
