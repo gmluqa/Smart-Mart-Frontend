@@ -14,7 +14,9 @@ To check out in production, use the following link to the AWS front end -> (link
 
 If you would like to see the back end for this project, please direct yourself to the following repository -> https://github.com/gmluqa/Smart-Mart-Backend
 
-(In this section, I show 3 images that show 3 views)
+![view 1](./readme/img/view1.png)
+
+![view 2](./readme/img/view2.png)
 
 # Set-up for local development
 
