@@ -10,7 +10,7 @@ Welcome to the frontend repo for my project: Smart Mart, the one stop shop for a
 
 The frontend is made with: React, React-Bootstrap, Redux, SASS and hosted on Aws Amplify!
 
-To check out in production, use the following link to the AWS front end -> (link will go here)
+To check out in production, use the following link to the AWS front end -> (link will go here, am not putting it yet just in case someone brute forces my railway instance out of credits)
 
 If you would like to see the back end for this project, please direct yourself to the following repository -> https://github.com/gmluqa/Smart-Mart-Backend
 
