@@ -58,16 +58,16 @@ const IndexPage = () => {
           </Row>
           <Row>
             <ProductVideo
-              name="Ecoco Toothpaste Dispenser"
-              url="https://www.youtube.com/embed/9yv_qUgCBQE"
+              name="Life Straw"
+              url="https://www.youtube.com/embed/VuJpgN1oCxQ"
             ></ProductVideo>
             <ProductVideo
-              name="Ecoco Toothpaste Dispenser"
-              url="https://www.youtube.com/embed/9yv_qUgCBQE"
+              name="Sushi Roller"
+              url="https://www.youtube.com/embed/_VuywLIRmhg"
             ></ProductVideo>
             <ProductVideo
-              name="Ecoco Toothpaste Dispenser"
-              url="https://www.youtube.com/embed/9yv_qUgCBQE"
+              name="Cable Management Hub"
+              url="https://www.youtube.com/embed/lekiev91dEU"
             ></ProductVideo>
           </Row>
         </Col>
