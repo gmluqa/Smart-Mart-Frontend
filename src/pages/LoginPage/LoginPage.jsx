@@ -10,7 +10,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const loginSubmit = async (email, password) => {
-    console.log("button");
     let jwt = await loginUser(email, password);
     authMessageHandler(jwt.message);
     localStorage.setItem("SmartMartJwt", jwt.jwt);
@@ -21,7 +20,6 @@ const LoginPage = () => {
   };
 
   const registerSubmit = async () => {
-    console.log("heres a register");
     let register = await registerUser(
       formBasicEmailRegister.value,
       formBasicPasswordRegister.value

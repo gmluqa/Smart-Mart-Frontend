@@ -74,7 +74,6 @@ const CheckoutButton = () => {
 
   useEffect(() => {
     setIsLogged(login.loginValid);
-    console.log(isLogged);
   }, [login]);
 
   return (
