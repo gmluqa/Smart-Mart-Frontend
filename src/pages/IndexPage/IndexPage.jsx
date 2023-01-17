@@ -1,6 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import ProductImage from "../../components/ProductImage/ProductImage";
 import ProductVideo from "../../components/ProductVideo/ProductVideo";
+import Categories from "../../components/Categories/Categories";
 import "./IndexPage.scss";
 
 let productsToFetchArray = [
@@ -20,12 +21,7 @@ const IndexPage = () => {
         </Row>
         <Row className="pt-3 index-row">
           <Col lg={4} className="ps-5">
-            <Col>Categories</Col>
-            <Col>Tech</Col>
-            <Col>Lifestyle</Col>
-            <Col>Kitchen</Col>
-            <Col>Bathroom</Col>
-            <Col>Supplements</Col>
+            <Categories />
           </Col>
           <Col>
             <ProductImage name={productsToFetchArray[0]}></ProductImage>
