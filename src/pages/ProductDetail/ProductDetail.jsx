@@ -15,7 +15,6 @@ const ProductDetails = () => {
 
   useEffect(() => {
     getProductByName(productName).then(data => setProduct(data));
-    console.log(product);
   }, []);
 
   if (product?.product_name != "Error") {
@@ -41,7 +40,6 @@ const ProductDetails = () => {
             </Row>
             <Row>
               <Col>
-                {console.log(product)}
                 <iframe
                   src={product?.[0]?.youtube_url}
                   allowFullScreen

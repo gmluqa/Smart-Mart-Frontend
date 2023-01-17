@@ -21,7 +21,6 @@ export async function createNewOrder(items, jwtIfLoggedIn) {
       });
     return orderMessage;
   } catch (error) {
-    console.log(error);
     return { message: "well this sucks", success: false };
   }
 }
