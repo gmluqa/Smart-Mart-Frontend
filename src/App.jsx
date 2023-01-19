@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFound from "./pages/NotFound/NotFound";
 import UserOrders from "./pages/UserOrders/UserOrders";
 import AdminOrders from "./pages/AdminOrders/AdminOrders";
+import TagProducts from "./pages/TagProducts/TagProducts";
 import { useEffect, useState } from "react";
 import { useJwt } from "react-jwt";
 import { useDispatch, useSelector } from "react-redux";
@@ -58,7 +59,7 @@ function App() {
           element={<ProductDetail />}
         ></Route>
         <Route path="/User Area/Admin Orders" element={<AdminOrders />}></Route>
-
+        <Route path="/tags/:tagName" element={<TagProducts />}></Route>
         {/* Reserved spot for 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
