@@ -1,31 +1,39 @@
-import Pagination from "react-bootstrap/Pagination";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAllProductsByTag } from "../../services/apiCalls/getAllProductsByTag";
-import { Container } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
+import ProductImage from "../../components/ProductImage/ProductImage";
 
 const TagProducts = () => {
   const { tagName } = useParams();
   const [articles, setArticles] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(6);
+
+  const ARTICLES_PER_PAGE = 3;
+  let rowCount = Math.ceil(articles.length / ARTICLES_PER_PAGE);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await getAllProductsByTag(tagName);
-      setArticles(res);
+      setArticles(res.data);
     };
     fetchPosts();
-    // set number of pages, divide by postsPerPage, if less than 1, its 1, if float value, round up
   }, []);
 
   return (
     <Container>
-      <Pagination>
-        <Pagination.Item>a</Pagination.Item>
-        <Pagination.Item>b</Pagination.Item>
-        <Pagination.Item>c</Pagination.Item>
-      </Pagination>
+      <Row>
+        <Row className="mt-5"></Row>
+
+        {articles.map(element => {
+          return (
+            <ProductImage
+              name={element.Product.product_name}
+              key={element.id}
+            />
+          );
+        })}
+        <Row className="mt-5"></Row>
+      </Row>
     </Container>
   );
 };
