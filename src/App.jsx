@@ -20,6 +20,7 @@ import {
 } from "./store/slices/loginSlice";
 import UserArea from "./pages/UserArea/UserArea";
 import SearchPage from "./pages/SearchPage/SearchPage";
+import CreateProduct from "./pages/CreateProduct/CreateProduct";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,11 @@ function App() {
         <Route path="/" element={<IndexPage />} />
         <Route path="/User Area" element={<UserArea />} />
         <Route path="/User Area/Orders" element={<UserOrders />} />
+
+        <Route path="/User Area/Create Product" element={<CreateProduct />} />
+        {/* <Route path="/User Area/Update Product" element={<AdminCrud />} />
+        <Route path="/User Area/Delete Product" element={<AdminCrud />} /> */}
+
         <Route path="/search" element={<SearchPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />
