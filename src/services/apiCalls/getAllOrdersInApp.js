@@ -6,7 +6,7 @@ let allOrdersInApp;
 const gettAllOrdersInApp = async jwtIfLoggedIn => {
   try {
     await axios
-      .get(`${apiRoute}/order/admin`, {
+      .get(`${apiRoute}/order/all`, {
         headers: {
           Authorization: `Bearer ${jwtIfLoggedIn}`,
         },
