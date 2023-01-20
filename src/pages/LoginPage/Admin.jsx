@@ -13,6 +13,21 @@ const Admin = () => {
           </Button>
         </Col>
         <Col className="p-5">
+          <Button onClick={() => navigate("./Create Product")}>
+            Create Product
+          </Button>
+        </Col>
+        <Col className="p-5">
+          <Button onClick={() => navigate("./Update Product")}>
+            Update Product
+          </Button>
+        </Col>
+        <Col className="p-5">
+          <Button onClick={() => navigate("./Delete Product")}>
+            Delete Product
+          </Button>
+        </Col>
+        <Col className="p-5">
           <Logout />
         </Col>
       </Row>

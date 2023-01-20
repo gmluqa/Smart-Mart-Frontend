@@ -20,7 +20,9 @@ import {
 } from "./store/slices/loginSlice";
 import UserArea from "./pages/UserArea/UserArea";
 import SearchPage from "./pages/SearchPage/SearchPage";
-
+import CreateProduct from "./pages/CreateProduct/CreateProduct";
+import UpdateProduct from "./pages/UpdateProduct/UpdateProduct";
+import DeleteProduct from "./pages/DeleteProduct/DeleteProduct";
 function App() {
   const dispatch = useDispatch();
   const login = useSelector(state => state.login);
@@ -51,6 +53,11 @@ function App() {
         <Route path="/" element={<IndexPage />} />
         <Route path="/User Area" element={<UserArea />} />
         <Route path="/User Area/Orders" element={<UserOrders />} />
+
+        <Route path="/User Area/Create Product" element={<CreateProduct />} />
+        <Route path="/User Area/Update Product" element={<UpdateProduct />} />
+        <Route path="/User Area/Delete Product" element={<DeleteProduct />} />
+
         <Route path="/search" element={<SearchPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />
