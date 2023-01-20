@@ -22,6 +22,7 @@ import UserArea from "./pages/UserArea/UserArea";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import CreateProduct from "./pages/CreateProduct/CreateProduct";
 import UpdateProduct from "./pages/UpdateProduct/UpdateProduct";
+import DeleteProduct from "./pages/DeleteProduct/DeleteProduct";
 function App() {
   const dispatch = useDispatch();
   const login = useSelector(state => state.login);
@@ -55,7 +56,7 @@ function App() {
 
         <Route path="/User Area/Create Product" element={<CreateProduct />} />
         <Route path="/User Area/Update Product" element={<UpdateProduct />} />
-        {/* <Route path="/User Area/Delete Product" element={<AdminCrud />} />  */}
+        <Route path="/User Area/Delete Product" element={<DeleteProduct />} />
 
         <Route path="/search" element={<SearchPage />} />
         <Route path="/cart" element={<CartPage />} />
